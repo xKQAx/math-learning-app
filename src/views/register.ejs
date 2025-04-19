@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a href="/" class="logo">MathPlay</a>
+                <ul class="nav-links">
+                    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/games"><i class="fas fa-dice"></i> Games</a></li>
+                    <li><a href="/progress"><i class="fas fa-star"></i> Progress</a></li>
+                </ul>
+            </div>
+            <div class="navbar-right">
+                <button class="parent-zone">Parent Zone</button>
+                <% if (typeof user !== 'undefined' && user) { %>
+                    <div class="user-info">
+                        <span class="user-name"><%= user.username %></span>
+                        <button class="logout-button" onclick="window.location.href='/logout'">Cerrar sesión</button>
+                    </div>
+                <% } else { %>
+                    <div class="user-menu">
+                        <span class="user-name">Menú</span>
+                        <div class="dropdown-menu" id="dropdown-menu">
+                            <a href="/login">Iniciar sesión</a>
+                            <a href="/register">Registrarse</a>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Registro</h1>
+        <form action="/register" method="POST">
+            <input type="text" name="username" placeholder="Nombre de usuario" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Registrarse</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Aprendizaje de Matemáticas. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

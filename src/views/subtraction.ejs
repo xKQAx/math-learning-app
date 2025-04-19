@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Restas</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="/js/p5.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a href="/" class="logo">MathPlay</a>
+                <ul class="nav-links">
+                    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/games"><i class="fas fa-dice"></i> Games</a></li>
+                    <li><a href="/progress"><i class="fas fa-star"></i> Progress</a></li>
+                </ul>
+            </div>
+            <div class="navbar-right">
+                <button class="parent-zone">Parent Zone</button>
+                <% if (user) { %>
+                    <!-- Nombre del usuario logueado -->
+                    <div class="user-info">
+                        <span class="user-name"><%= user.username %></span>
+                        <button class="logout-button" onclick="window.location.href='/logout'">Cerrar sesión</button>
+                    </div>
+                <% } else { %>
+                    <!-- Menú desplegable para usuarios no logueados -->
+                    <div class="user-menu">
+                        <span class="user-name">Menú</span>
+                        <div class="dropdown-menu" id="dropdown-menu">
+                            <a href="/login">Iniciar sesión</a>
+                            <a href="/register">Registrarse</a>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Miga de pan -->
+        <nav class="breadcrumb">
+            <a href="/">Inicio</a> > <a href="/games">Juegos</a> > Restas con el número 5
+        </nav>
+
+        <!-- Título y subtítulo -->
+        <section class="exercise-header">
+            <h1>Restas con el número 5</h1>
+            <h2>¡Aprende a restar de forma divertida!</h2>
+            <p class="instructions">
+                En este ejercicio, debes resolver las restas interactuando con los elementos en pantalla. 
+                Sigue las pistas y diviértete aprendiendo.
+            </p>
+        </section>
+
+        <!-- Barra de progreso -->
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <!-- Contenedor del ejercicio -->
+        <div id="subtraction-exercise-container">
+            <div id="current-exercise">
+                <!-- Aquí se cargará dinámicamente el ejercicio actual -->
+            </div>
+            <div id="exercise-buttons-container">
+                <div id="exercise-buttons">
+                    <button id="reset-exercise">Reiniciar</button>
+                    <button id="show-hint">Mostrar pista</button>
+                    <button id="auto-solve">Resolver paso a paso</button>
+                    <button id="next-exercise" disabled>Siguiente ejercicio</button>
+                </div>
+                <div id="p5-container"></div>
+            </div>
+        </div>
+        <div id="result"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Aprendizaje Matemático. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/subtraction-p5.js"></script>
+</body>
+</html>

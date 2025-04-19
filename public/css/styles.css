@@ -1,0 +1,727 @@
+/* Importar la fuente Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* styles.css - Estilos para la aplicación de aprendizaje matemático */
+
+/* Estilos generales */
+:root {
+    --primary-color: #624afe; /* Color principal para botones */
+    --secondary-color: #f0edff; /* Fondo claro para botones */
+    --accent-color: #4b3f72; /* Color de acento */
+    --title-color: #4b3f72; /* Color para títulos */
+    --subtitle-color: #6d6875; /* Color para subtítulos */
+    --text-color: #4b3f72; /* Color base para texto */
+    --bg-color: #f9f9f9; /* Fondo general */
+    --border-radius: 8px;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: white;
+    border-bottom: 2px solid #f1f1f0;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navbar izquierda */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black; /* Texto en negro */
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+}
+
+.nav-links li a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold; /* Negrilla */
+    color: black; /* Texto en negro */
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s;
+}
+
+.nav-links li a:hover {
+    background-color: #f1f1f0;
+}
+
+/* Navbar derecha */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.parent-zone {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.parent-zone:hover {
+    background-color: var(--accent-color);
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    transition: border-color 0.3s;
+}
+
+.user-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-icon:hover {
+    border-color: var(--primary-color);
+}
+
+/* Contenedor del menú de usuario */
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+#user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    transition: border-color 0.3s;
+}
+
+#user-icon:hover {
+    border-color: var(--primary-color);
+}
+
+/* Menú desplegable */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 150px;
+    text-align: left;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f0;
+}
+
+/* Mostrar el menú al hacer clic */
+.user-menu:hover .dropdown-menu {
+    display: block;
+}
+
+/* Estilo para el nombre del usuario */
+.user-name {
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.user-name:hover {
+    color: var(--primary-color);
+}
+
+/* Estilo para el contenedor del usuario logueado o no logueado */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.user-info:hover {
+    color: var(--primary-color);
+}
+
+/* Estilo para el ícono del usuario */
+.user-info .user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    transition: border-color 0.3s;
+}
+
+.user-info .user-icon:hover {
+    border-color: var(--primary-color);
+}
+
+/* Menú desplegable */
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.user-menu .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 150px;
+    text-align: left;
+}
+
+.user-menu .dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.user-menu .dropdown-menu a:hover {
+    background-color: #f1f1f0;
+}
+
+/* Mostrar el menú al hacer clic */
+.user-menu:hover .dropdown-menu {
+    display: block;
+}
+
+/* Contenedor principal */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Ejercicios de resta */
+#subtraction-exercises {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.exercise {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.exercise:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.exercise p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.answer {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.2rem;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius);
+    transition: all 0.3s;
+}
+
+.answer:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(51, 102, 204, 0.2);
+}
+
+/* Botón de envío */
+#submit-answers {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 1.5rem auto;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#submit-answers:hover {
+    background-color: #2855b3;
+    transform: translateY(-2px);
+}
+
+#submit-answers:active {
+    transform: translateY(0);
+}
+
+/* Contenedor de resultados */
+#result {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    background-color: var(--secondary-color);
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.result-box.success {
+    background-color: #e6ffe6;
+    border-left-color: var(--success-color);
+}
+
+.result-box h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.result-box p {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.result-value {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.congratulation {
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Contenedor de p5.js */
+#p5-container {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    margin: 2rem auto;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f7f7fe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#p5-container {
+    margin: 20px auto; /* Espacio en la parte superior y centrado horizontal */
+    width: 400px; /* Ancho del contenedor */
+    height: 200px; /* Alto del contenedor */
+    border: 1px solid #ddd; /* Borde para delimitar el área */
+    background-color: #fff; /* Fondo blanco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Animación de celebración */
+.celebration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    top: -10px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(calc(100vh + 10px)) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Pie de página */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav li {
+        margin: 0.3rem 0;
+    }
+    
+    #subtraction-exercises {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Botones de ejercicio */
+#exercise-buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#exercise-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#exercise-buttons button,
+#next-exercise {
+    padding: 6px 12px; /* Tamaño más pequeño */
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 120px; /* Tamaño uniforme */
+    text-align: center;
+}
+
+#exercise-buttons button:hover,
+#next-exercise:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+#exercise-buttons button:disabled,
+#next-exercise:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Contenedor de ejercicios */
+#current-exercise {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#current-exercise:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#current-exercise p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 0 0 1rem;
+}
+
+/* Campo de entrada para la respuesta */
+#user-answer {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 1rem;
+    padding: 0.75rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius);
+    transition: all 0.3s;
+}
+
+#user-answer:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(51, 102, 204, 0.2);
+}
+
+/* Feedback del ejercicio */
+#feedback {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: color 0.3s;
+}
+
+/* Estilo para la operación */
+.operation span {
+    color: #4a6dff; /* Mismo color que el resultado */
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Títulos */
+h1, h2, h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700; /* Negrilla */
+    color: var(--title-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* Subtítulos */
+.subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; /* Semi-negrilla */
+    color: var(--subtitle-color);
+    font-size: 1.2rem;
+}
+
+/* Texto base */
+body, p, span, li, input, button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400; /* Normal */
+    color: var(--text-color);
+}
+
+/* Estilo para el contenedor del usuario logueado */
+.user-info {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Estilo para el nombre del usuario */
+.user-name {
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.user-name:hover {
+    color: var(--primary-color);
+}
+
+/* Botón de cerrar sesión */
+.logout-button {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+    z-index: 1000;
+    opacity: 0; /* Oculto por defecto */
+}
+
+/* Mostrar el botón al pasar el cursor sobre el nombre */
+.user-info:hover .logout-button {
+    display: block;
+    opacity: 1; /* Mostrar el botón */
+}
+
+/* Mantener el botón visible un poco más */
+.user-info .logout-button:hover {
+    display: block;
+    opacity: 1; /* Mantener visible mientras el cursor esté sobre el botón */
+}
+
+/* Miga de pan */
+.breadcrumb {
+    margin: 20px 0;
+    font-size: 0.9rem;
+    color: black;
+    font-weight: bold;
+}
+
+.breadcrumb a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-color);
+}
+
+/* Título y subtítulo */
+.exercise-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.exercise-header h1 {
+    font-size: 2rem;
+    color: var(--title-color);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.exercise-header h2 {
+    font-size: 1.5rem;
+    color: var(--subtitle-color);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.instructions {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 0 auto;
+    max-width: 600px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Barra de progreso */
+.progress-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin: 20px 0;
+    height: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0; /* Cambia dinámicamente con JavaScript */
+    transition: width 0.5s ease;
+}
+
+/* Deshabilitar las flechas de aumento/disminución en campos de tipo number */
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+    -webkit-appearance: none; /* Chrome, Safari, Edge */
+    appearance: none; /* Estándar */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Eliminar márgenes */
+}
