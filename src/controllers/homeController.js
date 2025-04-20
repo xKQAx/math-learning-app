@@ -1,10 +1,10 @@
-const homeController = {
-    renderHome: (req, res) => {
-        res.render('home', {
-            title: 'Home - Math Learning App',
-            message: 'Welcome to the Math Learning App! Let\'s have fun learning math together!'
-        });
-    }
+const renderHome = (req, res) => {
+    const isLoggedIn = req.session?.user ? true : false; // Verificar si el usuario está logueado
+    const user = req.session?.user || null; // Obtener los datos del usuario si está logueado
+
+    res.render('home', { isLoggedIn, user });
 };
 
-module.exports = homeController;
+module.exports = {
+    renderHome,
+};

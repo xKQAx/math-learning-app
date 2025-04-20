@@ -58,9 +58,7 @@ app.set('views', path.join(__dirname, 'src', 'views'));
 
 // Routes
 // Ruta para la página principal
-app.get('/', (req, res) => {
-    res.render('index', { title: 'Bienvenidos a MathPlay' });
-});
+app.get('/', homeController.renderHome);
 
 app.get('/progress', (req, res) => {
     res.render('progress', { title: 'Progreso' });
