@@ -16,7 +16,7 @@ const app = express();
 const PORT = 3000;
 
 // Conexión a MongoDB
-mongoose.connect('mongodb://localhost:27017/math-learning-app')
+mongoose.connect('mongodb+srv://xKQAx:aliasgamer2.0@cluster0.8q0utd9.mongodb.net/')
     .then(() => console.log('Conectado a MongoDB'))
     .catch(err => console.error('Error al conectar a MongoDB:', err));
 
