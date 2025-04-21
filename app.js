@@ -32,7 +32,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost:27017/math-learning-app', // Cambia esto según tu configuración de MongoDB
+        mongoUrl: 'mongodb+srv://xKQAx:aliasgamer2.0@cluster0.8q0utd9.mongodb.net/', // Cambia esto según tu configuración de MongoDB
     }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 // 1 día
