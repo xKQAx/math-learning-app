@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathPlay - Aprendizaje de Matemáticas para 1ro Primaria</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a href="/" class="logo"><i class="fas fa-calculator logo-icon"></i> MathPlay</a>
+                <ul class="nav-links">
+                    <li><a href="/" class="active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/games"><i class="fas fa-dice"></i> Juegos</a></li>
+                    <li><a href="/progress"><i class="fas fa-star"></i> Progreso</a></li>
+                </ul>
+            </div>
+            <div class="navbar-right">
+                <div id="user-menu" class="user-menu">
+                    <div class="auth-buttons">
+                        <a href="/login" class="login-button">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                        </a>
+                        <a href="/register" class="register-button">
+                            <i class="fas fa-user-plus"></i> Registrarse
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="welcome-section guest">
+            <div class="floating-shapes">
+                <div class="shape circle"></div>
+                <div class="shape square"></div>
+                <div class="shape triangle"></div>
+                <div class="shape star"></div>
+                <div class="shape plus"></div>
+                <div class="shape number">1</div>
+                <div class="shape number">2</div>
+                <div class="shape number">3</div>
+            </div>
+            
+            <div class="hero-banner animate__animated animate__fadeIn">
+                <div class="hero-content" data-aos="fade-right">
+                    <div class="badge animate__animated animate__bounceIn animate__delay-1s">
+                        <span><i class="fas fa-award"></i> Recomendado por docentes</span>
+                    </div>
+                    <h1 class="animate__animated animate__fadeInUp animate__delay-0.5s">Aprende matemáticas jugando con MathPlay</h1>
+                    <p class="subtitle animate__animated animate__fadeInUp animate__delay-0.7s">La forma más divertida para que los niños de 1º de primaria aprendan matemáticas</p>
+                    <div class="hero-actions animate__animated animate__fadeInUp animate__delay-1s">
+                        <a href="/register" class="action-button primary pulse-button">
+                            <i class="fas fa-rocket"></i> Comenzar Gratis
+                        </a>
+                        <a href="/games/demo" class="action-button secondary">
+                            <i class="fas fa-gamepad"></i> Probar Demo
+                        </a>
+                    </div>
+                    <div class="users-count animate__animated animate__fadeIn animate__delay-1.5s">
+                        <div class="user-avatars">
+                            <div class="user-avatar"></div>
+                            <div class="user-avatar"></div>
+                            <div class="user-avatar"></div>
+                        </div>
+                        <p>+5000 estudiantes aprendiendo</p>
+                    </div>
+                </div>
+                <div class="hero-image" data-aos="fade-left">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png" alt="Niños aprendiendo matemáticas" class="floating-animation">
+                    <div class="math-symbols">
+                        <span class="symbol">+</span>
+                        <span class="symbol">−</span>
+                        <span class="symbol">×</span>
+                        <span class="symbol">=</span>
+                    </div>
+                </div>
+            </div>            
+            
+            <div class="features" data-aos="fade-up">
+                <h2>¿Por qué elegir MathPlay?</h2>
+                <div class="features-grid">
+                    <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="feature-icon">
+                            <div class="icon-circle">
+                                <i class="fas fa-puzzle-piece"></i>
+                            </div>
+                        </div>
+                        <h3>Aprendizaje Lúdico</h3>
+                        <p>Juegos interactivos que enseñan conceptos matemáticos fundamentales de forma divertida.</p>
+                    </div>
+                    <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="feature-icon">
+                            <div class="icon-circle">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                        </div>
+                        <h3>Seguimiento de Progreso</h3>
+                        <p>Monitorea el avance de los estudiantes y las habilidades adquiridas en tiempo real.</p>
+                    </div>
+                    <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="feature-icon">
+                            <div class="icon-circle">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                        </div>
+                        <h3>Sistema de Recompensas</h3>
+                        <p>Motiva el aprendizaje continuo con medallas y puntos por cada logro alcanzado.</p>
+                    </div>
+                    <div class="feature-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="feature-icon">
+                            <div class="icon-circle">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                        </div>
+                        <h3>Alineado al Currículo</h3>
+                        <p>Contenido adaptado a los objetivos educativos de 1º de primaria, aprobado por docentes.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="games-preview-section" data-aos="fade-up">
+                <h2>Descubre nuestros juegos</h2>
+                <div class="games-preview">
+                    <!-- Juego 1 -->
+                    <div class="preview-game-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="game-preview-image">
+                            <img src="https://cdn-icons-png.flaticon.com/128/1048/1048953.png" alt="Juego de Sumas">
+                            <div class="game-badge">Popular</div>
+                        </div>
+                        <h3>Sumas Divertidas</h3>
+                        <p>Aprende a sumar jugando con coloridos objetos.</p>
+                        <a href="/games/sumas" class="game-link action-button primary">
+                            Jugar ahora <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Juego 2 -->
+                    <div class="preview-game-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="game-preview-image">
+                            <img src="https://cdn-icons-png.flaticon.com/128/1048/1048960.png" alt="Juego de Restas">
+                            <div class="game-badge">Nuevo</div>
+                        </div>
+                        <h3>Restas Mágicas</h3>
+                        <p>Domina las restas con divertidos desafíos.</p>
+                        <a href="/games/restas" class="game-link action-button primary">
+                            Jugar ahora <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Juego 3 -->
+                    <div class="preview-game-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="game-preview-image">
+                            <img src="https://cdn-icons-png.flaticon.com/128/1048/1048971.png" alt="Juego de Formas">
+                            <div class="game-badge">Recomendado</div>
+                        </div>
+                        <h3>Formas y Colores</h3>
+                        <p>Reconoce formas geométricas básicas.</p>
+                        <a href="/games/formas" class="game-link action-button primary">
+                            Jugar ahora <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonials" data-aos="fade-up">
+                <h2>Lo que dicen las familias</h2>
+                <div class="testimonials-container">
+                    <div class="testimonials-row">
+                        <!-- Testimonio 1 -->
+                        <div class="testimonial">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"A mi hijo le encanta MathPlay, ahora disfruta practicando matemáticas todos los días."</p>
+                            <div class="testimonial-author">
+                                <img src="https://cdn-icons-png.flaticon.com/128/2922/2922510.png" alt="María García" class="author-avatar">
+                                <span>María García</span>
+                            </div>
+                        </div>
+                        <!-- Testimonio 2 -->
+                        <div class="testimonial">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Como profesor, recomiendo MathPlay a todos mis alumnos. Es una herramienta perfecta."</p>
+                            <div class="testimonial-author">
+                                <img src="https://cdn-icons-png.flaticon.com/128/2922/2922506.png" alt="Carlos Rodríguez" class="author-avatar">
+                                <span>Carlos Rodríguez</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonials-row">
+                        <!-- Testimonio 3 -->
+                        <div class="testimonial">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p>"Mi hija esperaba con ansias su tiempo de práctica en MathPlay. Los gráficos la motivan."</p>
+                            <div class="testimonial-author">
+                                <img src="https://cdn-icons-png.flaticon.com/128/2922/2922522.png" alt="Laura Martínez" class="author-avatar">
+                                <span>Laura Martínez</span>
+                            </div>
+                        </div>
+                        <!-- Testimonio 4 -->
+                        <div class="testimonial">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"MathPlay ha sido una herramienta increíble para reforzar el aprendizaje de mi hijo."</p>
+                            <div class="testimonial-author">
+                                <img src="https://cdn-icons-png.flaticon.com/128/2922/2922530.png" alt="Pedro López" class="author-avatar">
+                                <span>Pedro López</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="how-it-works" data-aos="fade-up">
+                <h2>¿Cómo funciona?</h2>
+                <div class="how-it-works-slider-container">
+                    <button class="arrow-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div class="how-it-works-slider">
+                        <div class="how-it-works-step">
+                            <div class="step-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h3>Crea una cuenta</h3>
+                            <p>Regístrate gratis en menos de un minuto.</p>
+                        </div>
+                        <div class="how-it-works-step">
+                            <div class="step-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <h3>Explora juegos</h3>
+                            <p>Encuentra actividades adaptadas al nivel de tu hijo.</p>
+                        </div>
+                        <div class="how-it-works-step">
+                            <div class="step-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Sigue el progreso</h3>
+                            <p>Visualiza el avance y las áreas de mejora.</p>
+                        </div>
+                    </div>
+                    <button class="arrow-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="cta-section" data-aos="zoom-in">
+                <div class="cta-content">
+                    <h2>¿Listo para comenzar la aventura matemática?</h2>
+                    <p>Únete a miles de niños que ya están aprendiendo con MathPlay</p>
+                    <div class="cta-visual">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png" alt="Niño aprendiendo matemáticas" class="cta-image">
+                    </div>
+                    <div class="actions">
+                        <a href="/register" class="action-button primary pulse-button">
+                            <i class="fas fa-user-plus"></i> Crear Cuenta Gratis
+                        </a>
+                        <a href="/login" class="action-button secondary">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <i class="fas fa-calculator logo-icon"></i> MathPlay
+                </div>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="/about">Sobre Nosotros</a>
+                <a href="/contact">Contacto</a>
+                <a href="/privacy">Privacidad</a>
+                <a href="/help">Ayuda</a>
+                <a href="/blog">Blog</a>
+                <a href="/faq">Preguntas Frecuentes</a>
+            </div>
+            <p>&copy; 2023 MathPlay - Aprendizaje de Matemáticas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
