@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="stylesheet" href="/css/register.css">
     <link rel="stylesheet" href="/css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </head>
@@ -38,13 +39,13 @@
         </nav>
     </header>
 
-    <main>
-        <h1>Registro</h1>
-        <form action="/register" method="POST">
-            <input type="text" name="username" placeholder="Nombre de usuario" required>
-            <input type="email" name="email" placeholder="Correo electrónico" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Registrarse</button>
+    <main class="register-container">
+        <h1 class="register-title">Registro</h1>
+        <form action="/register" method="POST" class="register-form">
+            <input type="text" name="username" placeholder="Nombre de usuario" class="form-input" required>
+            <input type="email" name="email" placeholder="Correo electrónico" class="form-input" required>
+            <input type="password" name="password" placeholder="Contraseña" class="form-input" required>
+            <button type="submit" class="form-button">Registrarse</button>
         </form>
     </main>
 

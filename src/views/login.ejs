@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Archivo CSS existente -->
+    <link rel="stylesheet" href="/css/login.css"> <!-- Nuevo archivo CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </head>
 <body>
@@ -20,7 +21,7 @@
             </div>
             <div class="navbar-right">
                 <button class="parent-zone">Parent Zone</button>
-                <% if (typeof user !== 'undefined' && user) { %>
+                <% if (user) { %>
                     <div class="user-info">
                         <span class="user-name"><%= user.username %></span>
                         <button class="logout-button" onclick="window.location.href='/logout'">Cerrar sesión</button>
@@ -37,11 +38,13 @@
             </div>
         </nav>
     </header>
-    <h1>Inicio de Sesión</h1>
-    <form action="/login" method="POST">
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <button type="submit">Iniciar Sesión</button>
-    </form>
+    <main class="login-container">
+        <h1 class="login-title">Inicio de Sesión</h1>
+        <form action="/login" method="POST" class="login-form">
+            <input type="email" name="email" placeholder="Correo electrónico" class="form-input" required>
+            <input type="password" name="password" placeholder="Contraseña" class="form-input" required>
+            <button type="submit" class="form-button">Iniciar Sesión</button>
+        </form>
+    </main>
 </body>
 </html>

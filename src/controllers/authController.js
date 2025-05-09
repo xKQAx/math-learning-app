@@ -2,12 +2,12 @@ const bcrypt = require('bcrypt');
 const User = require('../models/userModel');
 
 // Renderizar la página de registro
-exports.renderRegister = (req, res) => {
+const renderRegister = (req, res) => {
     res.render('register');
 };
 
 // Registrar un nuevo usuario
-exports.register = async (req, res) => {
+const register = async (req, res) => {
     const { username, email, password } = req.body;
 
     try {
@@ -36,7 +36,7 @@ exports.register = async (req, res) => {
 };
 
 // Renderizar la página de inicio de sesión
-exports.renderLogin = (req, res) => {
+const renderLogin = (req, res) => {
     res.render('login', {
         title: 'Inicio de Sesión',
         user: req.session?.user || null // Pasar el usuario si está logueado, o null si no
@@ -44,7 +44,7 @@ exports.renderLogin = (req, res) => {
 };
 
 // Iniciar sesión
-exports.login = async (req, res) => {
+const login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
@@ -70,7 +70,7 @@ exports.login = async (req, res) => {
 };
 
 // Cerrar sesión
-exports.logout = (req, res) => {
+const logout = (req, res) => {
     req.session.destroy(err => {
         if (err) {
             console.error(err);
@@ -78,4 +78,26 @@ exports.logout = (req, res) => {
         }
         res.redirect('/login');
     });
+};
+
+const loginUser = (req, res) => {
+    const { email, password } = req.body;
+
+    // Simulación de autenticación (reemplaza con tu lógica real)
+    if (email === "santiagocacuav@gmail.com" && password === "aliasgamer2.0") {
+        req.session.user = { email }; // Guarda al usuario en la sesión
+        return res.redirect('/loggedHome'); // Redirige a loggedHome.ejs
+    }
+
+    // Si las credenciales son incorrectas
+    res.status(401).render('login', { error: 'Credenciales inválidas' });
+};
+
+module.exports = {
+    renderRegister,
+    register,
+    renderLogin,
+    login,
+    logout,
+    loginUser
 };

@@ -24,8 +24,6 @@ mongoose.connect('mongodb+srv://xKQAx:aliasgamer2.0@cluster0.8q0utd9.mongodb.net
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
     secret: 'your-secret-key', // Cambia esto por una clave secreta segura
@@ -58,7 +56,12 @@ app.set('views', path.join(__dirname, 'src', 'views'));
 
 // Routes
 // Ruta para la página principal
-app.get('/', homeController.renderHome);
+app.get('/', (req, res) => {
+    if (req.session.user) {
+        return res.redirect('/loggedHome'); // Redirige a loggedHome si el usuario está autenticado
+    }
+    res.sendFile(path.join(__dirname, 'public', 'index.html')); // Carga index.html si no está autenticado
+});
 
 app.get('/progress', (req, res) => {
     res.render('progress', { title: 'Progreso' });

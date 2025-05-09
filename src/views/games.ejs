@@ -19,6 +19,23 @@
                     <li><a href="/progress"><i class="fas fa-star"></i> Progress</a></li>
                 </ul>
             </div>
+            <div class="navbar-right">
+                <button class="parent-zone">Parent Zone</button>
+                <% if (user) { %>
+                    <div class="user-info">
+                        <span class="user-name"><%= user.username %></span>
+                        <button class="logout-button" onclick="window.location.href='/logout'">Cerrar sesión</button>
+                    </div>
+                <% } else { %>
+                    <div class="user-menu">
+                        <span class="user-name">Menú</span>
+                        <div class="dropdown-menu" id="dropdown-menu">
+                            <a href="/login">Iniciar sesión</a>
+                            <a href="/register">Registrarse</a>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
         </nav>
     </header>
 
