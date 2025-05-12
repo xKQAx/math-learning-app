@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number Friends</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/numberFriends.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </head>
 <body>
@@ -40,19 +41,117 @@
     </header>
 
     <main>
-        <h1>¡Bienvenido a Amigos Números!</h1>
-        <p>En esta sección, aprenderás a sumar y restar de manera divertida con tus amigos números.</p>
-        
-        <div id="number-friends-activity">
-            <h2>Actividad Interactiva</h2>
-            <p>Selecciona un número y descubre cómo se relaciona con otros números.</p>
-            <button onclick="startActivity()">Comenzar Actividad</button>
-        </div>
-
-        <div id="activity-result" style="display:none;">
-            <h2>Resultados de la Actividad</h2>
-            <p id="result-text"></p>
-            <button onclick="restartActivity()">Reiniciar Actividad</button>
+        <div class="game-container">
+            <h1 class="game-title">¡Amigos Números!</h1>
+            <p class="game-description">En el mundo de los números, cada número tiene amigos especiales. ¡Ayúdalos a encontrarse para formar nuevos números!</p>
+            
+            <div id="game-intro" class="game-section">
+                <div class="character-container">
+                    <div class="number-character">
+                        <div class="character-face">
+                            <div class="eyes">
+                                <div class="eye"></div>
+                                <div class="eye"></div>
+                            </div>
+                            <div class="mouth smile"></div>
+                        </div>
+                        <div class="character-body">5</div>
+                    </div>
+                    <div class="plus-sign">+</div>
+                    <div class="number-character">
+                        <div class="character-face">
+                            <div class="eyes">
+                                <div class="eye"></div>
+                                <div class="eye"></div>
+                            </div>
+                            <div class="mouth smile"></div>
+                        </div>
+                        <div class="character-body">3</div>
+                    </div>
+                    <div class="equals-sign">=</div>
+                    <div class="number-character result">
+                        <div class="character-face">
+                            <div class="eyes">
+                                <div class="eye"></div>
+                                <div class="eye"></div>
+                            </div>
+                            <div class="mouth big-smile"></div>
+                        </div>
+                        <div class="character-body">8</div>
+                    </div>
+                </div>
+                <button id="start-game" class="btn-primary">¡Jugar Ahora!</button>
+            </div>
+            
+            <div id="game-play" class="game-section" style="display:none;">
+                <div class="level-info">
+                    <span class="level-label">Nivel: </span>
+                    <span id="current-level">1</span>
+                    <div class="progress-container">
+                        <div id="level-progress" class="progress-bar"></div>
+                    </div>
+                </div>
+                
+                <div id="problem-container" class="problem-container">
+                    <div id="first-number" class="number-character draggable">
+                        <div class="character-face">
+                            <div class="eyes">
+                                <div class="eye"></div>
+                                <div class="eye"></div>
+                            </div>
+                            <div class="mouth"></div>
+                        </div>
+                        <div class="character-body">5</div>
+                    </div>
+                    <div class="plus-sign">+</div>
+                    <div id="second-number" class="number-character">
+                        <div class="character-face">
+                            <div class="eyes">
+                                <div class="eye"></div>
+                                <div class="eye"></div>
+                            </div>
+                            <div class="mouth"></div>
+                        </div>
+                        <div class="character-body">?</div>
+                    </div>
+                    <div class="equals-sign">=</div>
+                    <div id="result-number" class="number-character result">
+                        <div class="character-face">
+                            <div class="eyes">
+                                <div class="eye"></div>
+                                <div class="eye"></div>
+                            </div>
+                            <div class="mouth"></div>
+                        </div>
+                        <div class="character-body">10</div>
+                    </div>
+                </div>
+                
+                <p class="game-instruction">¿Qué número es amigo del <span id="first-number-text">5</span> para llegar a <span id="result-number-text">10</span>?</p>
+                
+                <div id="number-options" class="number-options">
+                    <!-- Los números para elegir se generarán dinámicamente con JavaScript -->
+                </div>
+                
+                <div id="result-feedback" class="result-feedback"></div>
+                
+                <button id="next-problem" class="btn-primary" style="display:none;">Siguiente Problema</button>
+            </div>
+            
+            <div id="game-end" class="game-section" style="display:none;">
+                <h2>¡Felicidades!</h2>
+                <div id="stars-container" class="stars-container">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>Has completado todos los niveles de Amigos Números.</p>
+                <p>Tu puntuación: <span id="final-score">0</span> de <span id="total-problems">10</span></p>
+                <div class="action-buttons">
+                    <button id="play-again" class="btn-primary">Jugar de Nuevo</button>
+                    <button id="go-home" class="btn-secondary" onclick="window.location.href='/'">Ir al Inicio</button>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -60,19 +159,6 @@
         <p>&copy; 2023 Aprendizaje Matemático. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="/js/main.js"></script>
-    <script>
-        function startActivity() {
-            // Lógica para iniciar la actividad interactiva
-            document.getElementById('number-friends-activity').style.display = 'none';
-            document.getElementById('activity-result').style.display = 'block';
-            document.getElementById('result-text').innerText = '¡Actividad en progreso!';
-        }
-
-        function restartActivity() {
-            document.getElementById('number-friends-activity').style.display = 'block';
-            document.getElementById('activity-result').style.display = 'none';
-        }
-    </script>
+    <script src="/js/numberFriends.js"></script>
 </body>
 </html>

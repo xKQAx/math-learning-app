@@ -1,0 +1,383 @@
+/* Estilos para la aplicación de diferencias */
+.game-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f8f8ff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.game-title {
+    text-align: center;
+    color: #4b0082;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Selector de nivel */
+.level-selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.level-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    background-color: #e0e0ff;
+    color: #4b0082;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.level-btn:hover {
+    background-color: #d0d0ff;
+    transform: translateY(-2px);
+}
+
+.level-btn.active {
+    background-color: #9370db;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Tablero de juego */
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+/* Contenedor del problema */
+.problem-container {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* Visualización de números */
+.number-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.number {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0ff;
+    border-radius: 15px;
+    color: #4b0082;
+}
+
+.operation {
+    color: #9370db;
+}
+
+.answer {
+    background-color: #ffe6e6;
+    border: 2px dashed #ff9999;
+}
+
+/* Representación visual con bloques */
+.visual-representation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.blocks-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    min-height: 80px;
+    min-width: 120px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #e0e0ff;
+}
+
+.block {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #9370db;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.block.removed {
+    background-color: #ffcccc;
+    opacity: 0.5;
+}
+
+.block.result {
+    background-color: #66bb6a;
+}
+
+.minus-sign, .equals-sign {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #9370db;
+}
+
+/* Contenedor de entrada */
+.input-container {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+/* Teclado numérico */
+.number-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.num-btn {
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background-color: #e0e0ff;
+    color: #4b0082;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.num-btn:hover {
+    background-color: #d0d0ff;
+    transform: translateY(-2px);
+}
+
+.check-btn, .clear-btn {
+    grid-column: span 3;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.check-btn {
+    background-color: #66bb6a;
+    color: white;
+}
+
+.check-btn:hover {
+    background-color: #4caf50;
+}
+
+.clear-btn {
+    background-color: #ff9999;
+    color: white;
+}
+
+.clear-btn:hover {
+    background-color: #ff7777;
+}
+
+/* Contenedor de retroalimentación */
+.feedback-container {
+    margin-bottom: 1.5rem;
+    min-height: 60px;
+}
+
+.feedback-message {
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: none;
+}
+
+.feedback-message.correct {
+    background-color: #e6ffe6;
+    color: #4caf50;
+    border: 1px solid #4caf50;
+}
+
+.feedback-message.incorrect {
+    background-color: #ffe6e6;
+    color: #ff5252;
+    border: 1px solid #ff5252;
+}
+
+/* Controles */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.control-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#nextBtn {
+    background-color: #9370db;
+    color: white;
+}
+
+#nextBtn:hover {
+    background-color: #8a62d9;
+}
+
+#hintBtn {
+    background-color: #ffd700;
+    color: #333;
+}
+
+#hintBtn:hover {
+    background-color: #ffc400;
+}
+
+/* Modal de pista */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.hint-content {
+    text-align: center;
+}
+
+.hint-animation {
+    height: 150px;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Barra de progreso */
+.progress-container {
+    margin-top: 1rem;
+}
+
+.progress-bar {
+    height: 15px;
+    background-color: #e0e0ff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #9370db;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 1.5rem;
+    }
+    
+    .game-title {
+        font-size: 2rem;
+    }
+    
+    .number-display {
+        font-size: 2rem;
+    }
+    
+    .number {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .visual-representation {
+        flex-direction: column;
+    }
+    
+    .blocks-container {
+        min-width: 200px;
+    }
+}
