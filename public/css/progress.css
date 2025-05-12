@@ -1,0 +1,54 @@
+/* Estilos para la página de progreso */
+.progress-summary {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.progress-summary h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.lessons {
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.lessons h2 {
+    font-size: 1.5rem;
+    color: #624afe;
+    margin-bottom: 10px;
+}
+
+.lessons ul {
+    list-style: none;
+    padding: 0;
+}
+
+.lessons li {
+    background: #f9f9f9;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.reset-button {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reset-button:hover {
+    background-color: #e60000;
+}

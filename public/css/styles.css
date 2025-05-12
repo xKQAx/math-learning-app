@@ -787,3 +787,194 @@ input[type="number"]::-webkit-outer-spin-button {
 .form-button:hover {
     background-color: #0056b3;
 }
+
+/* Register Page Styles - Modern and Engaging Design */
+:root {
+    --primary-color: #624afe;
+    --secondary-color: #ffffff;
+    --background-gradient-start: #2575fc;
+    --background-gradient-end: #6a11cb;
+    --text-color-dark: #333;
+    --text-color-light: #ffffff;
+    --input-background: #f9f9f9;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 100px); /* Adjust based on navbar height */
+    padding: 20px;
+    background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative background elements */
+.register-container::before,
+.register-container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+.register-container::before {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    right: -100px;
+}
+
+.register-container::after {
+    width: 200px;
+    height: 200px;
+    bottom: -50px;
+    left: -50px;
+}
+
+/* Register Form Wrapper */
+.register-form-wrapper {
+    background: var(--text-color-light);
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    z-index: 2;
+    transform: perspective(1000px) rotateX(-10deg);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.register-form-wrapper:hover {
+    transform: perspective(1000px) rotateX(0);
+    opacity: 1;
+}
+
+/* Title styling */
+.register-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+    position: relative;
+}
+
+.register-title::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Form styling */
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input fields */
+.form-input {
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: var(--input-background);
+    transition: all 0.3s ease;
+    color: var(--text-color-dark);
+}
+
+.form-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(37, 117, 252, 0.2);
+    background-color: white;
+    outline: none;
+}
+
+.form-input::placeholder {
+    color: rgba(51, 51, 51, 0.5);
+}
+
+/* Submit button */
+.form-button {
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-color-light);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: all 0.3s ease;
+}
+
+.form-button:hover::before {
+    left: 100%;
+}
+
+.form-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .register-form-wrapper {
+        padding: 30px;
+        margin: 0 15px;
+    }
+
+    .register-title {
+        font-size: 2rem;
+    }
+
+    .form-input,
+    .form-button {
+        padding: 12px;
+    }
+}
+
+/* Additional effects */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.register-form-wrapper {
+    animation: float 4s ease-in-out infinite;
+}
+

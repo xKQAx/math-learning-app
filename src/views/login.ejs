@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión</title>
-    <link rel="stylesheet" href="/css/styles.css"> <!-- Archivo CSS existente -->
-    <link rel="stylesheet" href="/css/login.css"> <!-- Nuevo archivo CSS -->
+    <title>Iniciar Sesión - MathPlay</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/login.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </head>
 <body>
@@ -15,8 +15,8 @@
                 <a href="/" class="logo">MathPlay</a>
                 <ul class="nav-links">
                     <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="/games"><i class="fas fa-dice"></i> Games</a></li>
-                    <li><a href="/progress"><i class="fas fa-star"></i> Progress</a></li>
+                    <li><a href="/games"><i class="fas fa-dice"></i> Juegos</a></li>
+                    <li><a href="/progress"><i class="fas fa-star"></i> Progreso</a></li>
                 </ul>
             </div>
             <div class="navbar-right">
@@ -38,13 +38,16 @@
             </div>
         </nav>
     </header>
+    
     <main class="login-container">
-        <h1 class="login-title">Inicio de Sesión</h1>
-        <form action="/login" method="POST" class="login-form">
-            <input type="email" name="email" placeholder="Correo electrónico" class="form-input" required>
-            <input type="password" name="password" placeholder="Contraseña" class="form-input" required>
-            <button type="submit" class="form-button">Iniciar Sesión</button>
-        </form>
+        <div class="login-form-wrapper">
+            <h1 class="login-title">Iniciar Sesión</h1>
+            <form action="/login" method="POST" class="login-form">
+                <input type="email" name="email" placeholder="Correo electrónico" class="form-input" required>
+                <input type="password" name="password" placeholder="Contraseña" class="form-input" required>
+                <button type="submit" class="form-button">Iniciar Sesión</button>
+            </form>
+        </div>
     </main>
 </body>
 </html>

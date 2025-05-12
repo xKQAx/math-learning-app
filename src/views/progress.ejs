@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Progreso - Aprendizaje de Matemáticas</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/progress.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </head>
 <body>
@@ -39,7 +40,27 @@
     </header>
 
     <main>
+        <section class="progress-summary">
+            <h1>Tu Progreso</h1>
+            <% if (user && user.completedLessons) { %>
+                <p>Lecciones aprendidas: <span id="lessons-learned"><%= user.completedLessons.length %></span></p>
+            <% } else { %>
+                <p>Lecciones aprendidas: <span id="lessons-learned">0</span></p>
+            <% } %>
+        </section>
 
+        <section class="lessons">
+            <h2>Lecciones Aprendidas</h2>
+            <ul>
+                <% if (user && user.completedLessons) { %>
+                    <% user.completedLessons.forEach(lesson => { %>
+                        <li><%= lesson %></li>
+                    <% }) %>
+                <% } else { %>
+                    <li>No has completado ninguna lección aún.</li>
+                <% } %>
+            </ul>
+        </section>
     </main>
 
     <footer>

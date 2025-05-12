@@ -130,8 +130,38 @@
             </div>
             <div class="progress-text">Problema <span id="currentProblem">1</span> de <span id="totalProblems">10</span></div>
         </div>
+
+        <!-- Botón para finalizar la lección -->
+        <button id="finishLessonButton" class="finish-lesson-btn">Finalizar Lección</button>
     </main>
 
     <script src="/js/differences.js"></script>
+    <script>
+        // Simulación de finalización de la lección
+        function completeLesson() {
+            const lessonId = 'differences'; // Identificador único de la lección
+
+            // Enviar solicitud al servidor para marcar la lección como completada
+            fetch('/progress/complete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ lessonId })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Redirigir a la página de progreso
+                    window.location.href = '/progress';
+                } else {
+                    console.error('Error al completar la lección');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Simula la finalización del último ejercicio
+        document.getElementById('finishLessonButton').addEventListener('click', completeLesson);
+    </script>
 </body>
 </html>

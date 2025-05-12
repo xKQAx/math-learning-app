@@ -49,3 +49,9 @@
 .game-button:hover {
     background-color: var(--accent-color);
 }
+
+.logo-icon {
+    font-size: 1.5rem;
+    margin-right: 8px;
+    color: inherit; /* Asegura que el color del ícono coincida con el texto */
+}

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="/css/register.css">
+    <title>Registro - MathPlay</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/register.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </head>
 <body>
@@ -15,12 +15,12 @@
                 <a href="/" class="logo">MathPlay</a>
                 <ul class="nav-links">
                     <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="/games"><i class="fas fa-dice"></i> Games</a></li>
-                    <li><a href="/progress"><i class="fas fa-star"></i> Progress</a></li>
+                    <li><a href="/games"><i class="fas fa-dice"></i> Juegos</a></li>
+                    <li><a href="/progress"><i class="fas fa-star"></i> Progreso</a></li>
                 </ul>
             </div>
             <div class="navbar-right">
-                <button class="parent-zone">Parent Zone</button>
+                <button class="parent-zone">Zona de Padres</button>
                 <% if (typeof user !== 'undefined' && user) { %>
                     <div class="user-info">
                         <span class="user-name"><%= user.username %></span>
@@ -40,17 +40,19 @@
     </header>
 
     <main class="register-container">
-        <h1 class="register-title">Registro</h1>
-        <form action="/register" method="POST" class="register-form">
-            <input type="text" name="username" placeholder="Nombre de usuario" class="form-input" required>
-            <input type="email" name="email" placeholder="Correo electrónico" class="form-input" required>
-            <input type="password" name="password" placeholder="Contraseña" class="form-input" required>
-            <button type="submit" class="form-button">Registrarse</button>
-        </form>
+        <div class="register-form-wrapper">
+            <h1 class="register-title">Registro</h1>
+            <form action="/register" method="POST" class="register-form">
+                <input type="text" name="username" placeholder="Nombre de usuario" class="form-input" required>
+                <input type="email" name="email" placeholder="Correo electrónico" class="form-input" required>
+                <input type="password" name="password" placeholder="Contraseña" class="form-input" required>
+                <button type="submit" class="form-button">Registrarse</button>
+            </form>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2023 Aprendizaje de Matemáticas. Todos los derechos reservados.</p>
+        <p>&copy; <%= new Date().getFullYear() %> MathPlay. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>

@@ -11,6 +11,8 @@ const MongoStore = require('connect-mongo');
 const authRoutes = require('./src/routes/authRoutes');
 const mongoose = require('mongoose');
 const gamesController = require('./src/controllers/gamesController');
+const progressRoutes = require('./src/routes/progressRoutes');
+const User = require('./src/models/userModel'); // Importa el modelo de usuario
 
 const app = express();
 const PORT = 3000;
@@ -38,6 +40,7 @@ app.use(session({
 }));
 
 app.use(authRoutes);
+app.use(progressRoutes);
 
 app.use((req, res, next) => {
     console.log(`Solicitud recibida: ${req.method} ${req.url}`);
@@ -47,6 +50,13 @@ app.use((req, res, next) => {
 // Middleware para pasar el estado del usuario a las vistas
 app.use((req, res, next) => {
     res.locals.user = req.session.user || null;
+    next();
+});
+
+app.use((req, res, next) => {
+    if (req.session.user) {
+        res.locals.user = req.session.user; // Hace que el usuario esté disponible en todas las vistas
+    }
     next();
 });
 
@@ -63,8 +73,18 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html')); // Carga index.html si no está autenticado
 });
 
-app.get('/progress', (req, res) => {
-    res.render('progress', { title: 'Progreso' });
+app.get('/progress', async (req, res) => {
+    if (!req.session.user) {
+        return res.redirect('/login'); // Redirige a login si no está autenticado
+    }
+
+    try {
+        const user = await User.findById(req.session.user._id); // Obtén el usuario desde la base de datos
+        res.render('progress', { user }); // Pasa el usuario a la vista
+    } catch (error) {
+        console.error('Error al obtener el progreso del usuario:', error);
+        res.status(500).send('Error al cargar la página de progreso');
+    }
 });
 
 app.get('/practice', (req, res) => {
