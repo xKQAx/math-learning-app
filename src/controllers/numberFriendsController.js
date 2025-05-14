@@ -8,7 +8,7 @@ const numberFriendsController = {
 
     generateNumberFriendsActivity: (req, res) => {
         const activity = {
-            numbers: this.getRandomNumbers(1, 20, 5), // Generate 5 random numbers between 1 and 20
+            numbers: numberFriendsController.getRandomNumbers(1, 20, 5), // Generar 5 números aleatorios entre 1 y 20
             instructions: 'Can you find the sum of these numbers?'
         };
         res.json(activity);

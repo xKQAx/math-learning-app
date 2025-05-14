@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -148,8 +148,8 @@
                 <p>Has completado todos los niveles de Amigos Números.</p>
                 <p>Tu puntuación: <span id="final-score">0</span> de <span id="total-problems">10</span></p>
                 <div class="action-buttons">
-                    <button id="play-again" class="btn-primary">Jugar de Nuevo</button>
-                    <button id="go-home" class="btn-secondary" onclick="window.location.href='/'">Ir al Inicio</button>
+                    <button id="play-again" class="btn-primary" onclick="completeLesson('play-again')">Jugar de Nuevo</button>
+                    <button id="go-home" class="btn-secondary" onclick="completeLesson('go-home')">Ir al Inicio</button>
                 </div>
             </div>
         </div>
@@ -160,5 +160,53 @@
     </footer>
 
     <script src="/js/numberFriends.js"></script>
+    <script>
+        // Función para completar la lección
+        function completeLesson(action) {
+            const lessonId = 'numberFriends'; // Identificador único de la lección
+
+            // Enviar solicitud al servidor para marcar la lección como completada
+            fetch('/progress/complete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ lessonId })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Redirigir según la acción
+                    if (action === 'play-again') {
+                        window.location.href = '/games/numberFriends'; // Redirige para jugar de nuevo
+                    } else if (action === 'go-home') {
+                        window.location.href = '/progress'; // Redirige a la página de progreso
+                    }
+                } else {
+                    console.error('Error al completar la lección');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Simulación: Mostrar el botón de finalizar lección al completar la actividad
+        function showCompleteLessonButton() {
+            const completeButton = document.getElementById('completeLessonButton');
+            completeButton.style.display = 'block'; // Mostrar el botón
+        }
+
+        // Simulación: Generar números y detectar cuando se completa la actividad
+        document.addEventListener('DOMContentLoaded', () => {
+            const numbersList = document.getElementById('numbers-list');
+            const numbers = [3, 7, 12, 5, 8]; // Simulación de números generados
+            numbers.forEach(num => {
+                const li = document.createElement('li');
+                li.textContent = num;
+                numbersList.appendChild(li);
+            });
+
+            // Simula completar la actividad
+            setTimeout(showCompleteLessonButton, 5000); // Muestra el botón después de 5 segundos
+        });
+    </script>
 </body>
 </html>

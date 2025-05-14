@@ -61,6 +61,10 @@
                 <% } %>
             </ul>
         </section>
+
+        <section class="actions">
+            <button id="reset-progress" class="reset-button" onclick="resetProgress()">Reiniciar Progreso</button>
+        </section>
     </main>
 
     <footer>
@@ -68,5 +72,26 @@
     </footer>
 
     <script src="/js/main.js"></script>
+    <script>
+        function resetProgress() {
+            if (confirm('¿Estás seguro de que deseas reiniciar tu progreso? Esta acción no se puede deshacer.')) {
+                fetch('/progress/reset', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Progreso reiniciado con éxito.');
+                        window.location.reload(); // Recargar la página para reflejar los cambios
+                    } else {
+                        alert('Hubo un error al reiniciar el progreso.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
 </body>
 </html>

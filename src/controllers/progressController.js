@@ -1,5 +1,5 @@
 const ProgressModel = require('../models/progressModel');
-const User = require('../models/userModel'); // Cambia '../models/User' a '../models/userModel'
+const User = require('../models/userModel'); // Modelo del usuario
 
 // Function to get user progress
 exports.getUserProgress = async (req, res) => {
@@ -52,4 +52,18 @@ const completeLesson = async (req, res) => {
     }
 };
 
-module.exports = { completeLesson };
+const resetProgress = async (req, res) => {
+    const userId = req.session.user._id; // ID del usuario logueado
+
+    try {
+        // Reiniciar el progreso del usuario en la base de datos
+        await User.findByIdAndUpdate(userId, { completedLessons: [] });
+
+        res.status(200).json({ message: 'Progreso reiniciado con éxito.' });
+    } catch (error) {
+        console.error('Error al reiniciar el progreso:', error);
+        res.status(500).json({ message: 'Error al reiniciar el progreso.' });
+    }
+};
+
+module.exports = { completeLesson, resetProgress };

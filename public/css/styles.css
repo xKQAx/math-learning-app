@@ -978,3 +978,29 @@ input[type="number"]::-webkit-outer-spin-button {
     animation: float 4s ease-in-out infinite;
 }
 
+.next-exercise-btn,
+.complete-lesson-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: background-color 0.3s ease;
+}
+
+.next-exercise-btn:hover,
+.complete-lesson-btn:hover {
+    background-color: #45a049;
+}
+
+.complete-lesson-btn {
+    background-color: #ff9800;
+}
+
+.complete-lesson-btn:hover {
+    background-color: #e68900;
+}
+

@@ -80,6 +80,12 @@
             </div>
         </div>
         <div id="result"></div>
+        
+        <!-- Botón para avanzar al siguiente ejercicio -->
+        <button id="nextExerciseButton" class="next-exercise-btn">Siguiente Ejercicio</button>
+
+        <!-- Botón para finalizar la lección (oculto por defecto) -->
+        <button id="completeLessonButton" class="complete-lesson-btn" style="display: none;" onclick="completeLesson()">Finalizar Lección</button>
     </main>
 
     <footer>
@@ -88,5 +94,43 @@
 
     <script src="/js/main.js"></script>
     <script src="/js/subtraction-p5.js"></script>
+    <script>
+        // Función para completar la lección
+        function completeLesson() {
+            const lessonId = 'subtraction'; // Identificador único de la lección
+
+            // Enviar solicitud al servidor para marcar la lección como completada
+            fetch('/progress/complete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ lessonId })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Redirigir a la página de progreso
+                    window.location.href = '/progress';
+                } else {
+                    console.error('Error al completar la lección');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Mostrar el botón de finalizar lección al completar el último ejercicio
+        function showCompleteLessonButton() {
+            const completeButton = document.getElementById('completeLessonButton');
+            completeButton.style.display = 'block'; // Mostrar el botón
+        }
+
+        // Detectar cuando se completa el último ejercicio
+        document.getElementById('nextExerciseButton').addEventListener('click', () => {
+            const isLastExercise = true; // Cambia esta lógica según tu implementación
+            if (isLastExercise) {
+                showCompleteLessonButton();
+            }
+        });
+    </script>
 </body>
 </html>
