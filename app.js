@@ -12,7 +12,8 @@ const authRoutes = require('./src/routes/authRoutes');
 const mongoose = require('mongoose');
 const gamesController = require('./src/controllers/gamesController');
 const progressRoutes = require('./src/routes/progressRoutes');
-const User = require('./src/models/userModel'); // Importa el modelo de usuario
+const User = require('./src/models/userModel');
+const isAuthenticated = require('./src/middleware/authMiddleware');
 
 const app = express();
 const PORT = 3000;
@@ -25,38 +26,41 @@ mongoose.connect('mongodb+srv://xKQAx:aliasgamer2.0@cluster0.8q0utd9.mongodb.net
 // Middleware para analizar datos del formulario
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
 
+// Configuración de sesión
 app.use(session({
     secret: 'your-secret-key', // Cambia esto por una clave secreta segura
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: 'mongodb+srv://xKQAx:aliasgamer2.0@cluster0.8q0utd9.mongodb.net/', // Cambia esto según tu configuración de MongoDB
+        mongoUrl: 'mongodb+srv://xKQAx:aliasgamer2.0@cluster0.8q0utd9.mongodb.net/',
     }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 // 1 día
     }
 }));
 
-app.use(authRoutes);
-app.use(progressRoutes);
-
+// Middleware para registrar solicitudes (logging)
 app.use((req, res, next) => {
     console.log(`Solicitud recibida: ${req.method} ${req.url}`);
     next();
 });
 
-// Middleware para pasar el estado del usuario a las vistas
+// Middleware para hacer el usuario disponible en todas las vistas
 app.use((req, res, next) => {
     res.locals.user = req.session.user || null;
     next();
 });
 
+// Middleware de autenticación para rutas públicas vs. privadas
 app.use((req, res, next) => {
-    if (req.session.user) {
-        res.locals.user = req.session.user; // Hace que el usuario esté disponible en todas las vistas
+    // Rutas que deben redirigir a loggedHome si el usuario está autenticado
+    const publicRoutes = ['/', '/index.html'];
+    
+    if (req.session.user && publicRoutes.includes(req.path)) {
+        return res.redirect('/loggedHome');
     }
+    
     next();
 });
 
@@ -64,46 +68,77 @@ app.use((req, res, next) => {
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src', 'views'));
 
-// Routes
-// Ruta para la página principal
-app.get('/', (req, res) => {
+// Rutas de autenticación
+app.use(authRoutes);
+app.use(progressRoutes);
+
+// Middleware para rutas públicas que requieren redirección si el usuario no está autentiado
+function redirectIfAuthenticated(req, res, next) {
     if (req.session.user) {
-        return res.redirect('/loggedHome'); // Redirige a loggedHome si el usuario está autenticado
+        return res.redirect('/loggedHome');
     }
-    res.sendFile(path.join(__dirname, 'public', 'index.html')); // Carga index.html si no está autenticado
+    next();
+}
+
+// RUTAS
+
+// Ruta pública principal (para usuarios no autenticados)
+app.get('/', redirectIfAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/progress', async (req, res) => {
-    if (!req.session.user) {
-        return res.redirect('/login'); // Redirige a login si no está autenticado
-    }
+// Ruta del home para usuarios autenticados
+app.get('/loggedHome', isAuthenticated, (req, res) => {
+    res.render('loggedHome', { 
+        user: req.session.user,
+        cssPath: '/css/loggedHome.css' // Añadimos la ruta CSS
+    });
+});
 
+// Página de inicio de sesión (solo accesible si no está autenticado)
+app.get('/login', redirectIfAuthenticated, (req, res) => {
+    res.render('login');
+});
+
+// Página de registro (solo accesible si no está autenticado)
+app.get('/register', redirectIfAuthenticated, (req, res) => {
+    res.render('register');
+});
+
+// Página de progreso (requiere autenticación)
+app.get('/progress', isAuthenticated, async (req, res) => {
     try {
-        const user = await User.findById(req.session.user._id); // Obtén el usuario desde la base de datos
-        res.render('progress', { user }); // Pasa el usuario a la vista
+        const user = await User.findById(req.session.user._id);
+        res.render('progress', { user });
     } catch (error) {
         console.error('Error al obtener el progreso del usuario:', error);
         res.status(500).send('Error al cargar la página de progreso');
     }
 });
 
-app.get('/practice', (req, res) => {
+// Otras rutas protegidas
+app.get('/practice', isAuthenticated, (req, res) => {
     res.render('practice', { title: 'Práctica de Suma' });
 });
 
-app.get('/numberFriends', (req, res) => {
-    res.render('numberFriends', { title: 'Amigos Números' });
+app.get('/numberFriends', isAuthenticated, (req, res) => {
+    res.render('numberFriends', { user: req.session.user });
 });
 
-app.get('/subtraction', (req, res) => {
-    res.render('subtraction', { title: 'Ejercicios de Restas' });
+app.get('/subtraction', isAuthenticated, (req, res) => {
+    res.render('subtraction', { user: req.session.user });
 });
 
-app.get('/differences', (req, res) => {
-    res.render('differences', { title: 'Diferencias entre Números' });
+app.get('/differences', isAuthenticated, (req, res) => {
+    res.render('differences', { user: req.session.user });
 });
 
-app.get('/games', gamesController.renderGames);
+app.get('/games', isAuthenticated, (req, res) => {
+    res.render('games', { user: req.session.user });
+});
+
+// Servir archivos estáticos (IMPORTANTE: esto debe ir DESPUÉS de definir las rutas principales)
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Start the server
 app.listen(PORT, () => {

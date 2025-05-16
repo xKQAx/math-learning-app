@@ -13,7 +13,9 @@
     <header>
         <nav class="navbar">
             <div class="navbar-left">
-                <a href="/" class="logo">MathPlay</a>
+                <a href="/" class="logo">
+                    <i class="fas fa-calculator logo-icon"></i> MathPlay
+                </a>
                 <ul class="nav-links">
                     <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="/games"><i class="fas fa-dice"></i> Games</a></li>
@@ -21,7 +23,6 @@
                 </ul>
             </div>
             <div class="navbar-right">
-                <button class="parent-zone">Parent Zone</button>
                 <% if (user) { %>
                     <div class="user-info">
                         <span class="user-name"><%= user.username %></span>
@@ -40,13 +41,28 @@
         </nav>
     </header>
     <main>
-        <h1 class="game-title">¡Aprende a Restar!</h1>
-        
-        <!-- Contexto del ejercicio -->
-        <div class="exercise-context">
-            <p>En este ejercicio, aprenderás a restar números de una manera visual y divertida. Observa los bloques que representan los números y calcula cuántos quedan después de quitar los bloques del segundo número.</p>
-            <p>Usa el teclado numérico para ingresar tu respuesta y presiona "Comprobar" para verificar si es correcta. ¡Buena suerte!</p>
-        </div>
+    <nav class="breadcrumb">
+        <a href="/loggedHome"><i class="fas fa-home"></i> Inicio</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="/games"><i class="fas fa-dice"></i> Juegos</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>Diferencias</span>
+    </nav>
+    <div class="intro-section">
+        <h1>
+            <span class="intro-emoji">➖</span>
+            ¡Aprende a Restar!
+        </h1>
+        <p class="intro-lead">
+            Descubre el mundo de las restas de forma <span class="highlight">visual</span> y <span class="highlight">divertida</span>.
+            Observa los bloques de colores para entender cómo se quitan cantidades y cuántos quedan.
+        </p>
+        <ul class="intro-tips">
+            <li>🔢 Usa el teclado numérico para ingresar tu respuesta.</li>
+            <li>✅ Presiona <b>Comprobar</b> para saber si tu respuesta es correcta.</li>
+            <li>🏆 ¡Cuando termines todos los niveles, haz clic en Completar Lección para guardar tu progreso.!</li>
+        </ul>
+    </div>
         
         <div class="level-selector">
             <button class="level-btn active" data-level="1">Nivel 1</button>
@@ -131,9 +147,14 @@
             <div class="progress-text">Problema <span id="currentProblem">1</span> de <span id="totalProblems">10</span></div>
         </div>
 
-        <!-- Botón para finalizar la lección -->
-        <button id="finishLessonButton" class="finish-lesson-btn">Finalizar Lección</button>
-    </main>
+        <div class="game-completed" style="display:none;">
+            <h2>¡Felicidades!</h2>
+            <p>Has completado todos los problemas.</p>
+            <div class="end-actions">
+                <button id="playAgainBtn" class="control-btn">Jugar de Nuevo</button>
+                <button id="finishLessonButton" class="control-btn">Finalizar Lección</button>
+            </div>
+        </div>
 
     <script src="/js/differences.js"></script>
     <script>

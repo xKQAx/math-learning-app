@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     completedLessons: { type: [String], default: [] }, // Lista de lecciones completadas
     createdAt: { type: Date, default: Date.now }
+    
 });
 
 const User = mongoose.model('User', userSchema);

@@ -2,6 +2,9 @@
 .progress-summary {
     text-align: center;
     margin-bottom: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .progress-summary h1 {
@@ -12,12 +15,16 @@
 .lessons {
     margin: 20px auto;
     max-width: 600px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .lessons h2 {
     font-size: 1.5rem;
     color: #624afe;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .lessons ul {
@@ -36,6 +43,9 @@
 .actions {
     text-align: center;
     margin-top: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .reset-button {
@@ -52,4 +62,83 @@
 
 .reset-button:hover {
     background-color: #e60000;
+}
+
+.progress-cards {
+    display: flex;
+    gap: 2rem;
+    margin: 1.5rem 0 2rem 0;
+    justify-content: center;
+}
+.progress-card {
+    background: linear-gradient(120deg, #f8f8ff 60%, #e0e0ff 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(98, 112, 219, 0.07);
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 180px;
+}
+.progress-card i {
+    font-size: 2.2rem;
+    color: #9370db;
+}
+.progress-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4a6cf7;
+}
+.progress-label {
+    font-size: 1rem;
+    color: #4b0082;
+}
+.lessons-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 500px;
+}
+.lesson-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(74, 108, 247, 0.07);
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.lesson-item.empty {
+    justify-content: center;
+    color: #aaa;
+    font-style: italic;
+}
+.lesson-name i {
+    color: #24d292;
+    margin-right: 0.5rem;
+}
+.delete-lesson-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    margin-left: 1rem;
+}
+.delete-lesson-btn:hover {
+    color: #b71c1c;
+}
+
+.progress-intro {
+    color: #4b0082;
+    font-size: 1.13rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    background: #f8f8ff;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(74, 108, 247, 0.06);
 }

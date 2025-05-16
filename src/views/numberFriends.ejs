@@ -13,7 +13,9 @@
     <header>
         <nav class="navbar">
             <div class="navbar-left">
-                <a href="/" class="logo">MathPlay</a>
+                <a href="/" class="logo">
+                    <i class="fas fa-calculator logo-icon"></i> MathPlay
+                </a>
                 <ul class="nav-links">
                     <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="/games"><i class="fas fa-dice"></i> Games</a></li>
@@ -21,7 +23,6 @@
                 </ul>
             </div>
             <div class="navbar-right">
-                <button class="parent-zone">Parent Zone</button>
                 <% if (user) { %>
                     <div class="user-info">
                         <span class="user-name"><%= user.username %></span>
@@ -41,9 +42,25 @@
     </header>
 
     <main>
+    <nav class="breadcrumb">
+        <a href="/loggedHome"><i class="fas fa-home"></i> Inicio</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="/games"><i class="fas fa-dice"></i> Juegos</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>Number Friends</span>
+    </nav>
+
         <div class="game-container">
-            <h1 class="game-title">¡Amigos Números!</h1>
-            <p class="game-description">En el mundo de los números, cada número tiene amigos especiales. ¡Ayúdalos a encontrarse para formar nuevos números!</p>
+            <h1 class="game-title">
+                <span class="intro-emoji">🤝</span>
+                ¡Amigos Números!
+            </h1>
+            <p class="game-description intro-lead">
+                Descubre cómo los números pueden ser <span class="highlight">amigos</span> y ayudarse entre sí para formar nuevos resultados.<br>
+                Elige el número correcto para completar la suma y observa cómo se unen.<br>
+                Usa tu lógica y diviértete encontrando todas las combinaciones posibles.<br>
+                Cuando termines todos los niveles, haz clic en <b>Completar Lección</b> para guardar tu progreso.
+            </p>
             
             <div id="game-intro" class="game-section">
                 <div class="character-container">
@@ -149,7 +166,7 @@
                 <p>Tu puntuación: <span id="final-score">0</span> de <span id="total-problems">10</span></p>
                 <div class="action-buttons">
                     <button id="play-again" class="btn-primary" onclick="completeLesson('play-again')">Jugar de Nuevo</button>
-                    <button id="go-home" class="btn-secondary" onclick="completeLesson('go-home')">Ir al Inicio</button>
+                    <button id="go-home" class="btn-secondary" onclick="completeLesson('go-home')">Completar Lección</button>
                 </div>
             </div>
         </div>

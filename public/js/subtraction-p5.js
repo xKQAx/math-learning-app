@@ -196,6 +196,12 @@ function nextExercise() {
         // Actualizar la barra de progreso al 100%
         currentExerciseIndex = exercises.length; // Asegurarse de que el índice refleje el progreso completo
         updateProgressBar();
+
+        // Habilitar el botón de finalizar lección
+        const completeButton = document.getElementById('completeLessonButton');
+        if (completeButton) {
+            completeButton.disabled = false;
+        }
     }
 }
 

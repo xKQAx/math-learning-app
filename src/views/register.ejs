@@ -12,7 +12,9 @@
     <header>
         <nav class="navbar">
             <div class="navbar-left">
-                <a href="/" class="logo">MathPlay</a>
+                <a href="/" class="logo">
+                    <i class="fas fa-calculator logo-icon"></i> MathPlay
+                </a>
                 <ul class="nav-links">
                     <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="/games"><i class="fas fa-dice"></i> Juegos</a></li>
@@ -20,7 +22,6 @@
                 </ul>
             </div>
             <div class="navbar-right">
-                <button class="parent-zone">Zona de Padres</button>
                 <% if (typeof user !== 'undefined' && user) { %>
                     <div class="user-info">
                         <span class="user-name"><%= user.username %></span>

@@ -12,7 +12,9 @@
     <header>
         <nav class="navbar">
             <div class="navbar-left">
-                <a href="/" class="logo">MathPlay</a>
+                <a href="/" class="logo">
+                    <i class="fas fa-calculator logo-icon"></i> MathPlay
+                </a>
                 <ul class="nav-links">
                     <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="/games"><i class="fas fa-dice"></i> Games</a></li>
@@ -20,7 +22,6 @@
                 </ul>
             </div>
             <div class="navbar-right">
-                <button class="parent-zone">Parent Zone</button>
                 <% if (user) { %>
                     <div class="user-info">
                         <span class="user-name"><%= user.username %></span>
@@ -40,30 +41,61 @@
     </header>
 
     <main>
-        <section class="progress-summary">
-            <h1>Tu Progreso</h1>
-            <% if (user && user.completedLessons) { %>
-                <p>Lecciones aprendidas: <span id="lessons-learned"><%= user.completedLessons.length %></span></p>
-            <% } else { %>
-                <p>Lecciones aprendidas: <span id="lessons-learned">0</span></p>
-            <% } %>
+        <section class="progress-summary" style="max-width: 900px; margin: 2.5rem auto 0 auto;">
+            <h1><i class="fas fa-chart-line"></i> Tu Progreso</h1>
+            <p class="progress-intro">
+                ¡Bienvenido a tu panel de progreso! Aquí puedes ver todas las lecciones que has completado y los puntos que has ganado por tu esfuerzo.<br>
+                Cada lección suma puntos diferentes: <b>Subtraction</b> (+2), <b>Differences</b> (+3), <b>Number Friends</b> (+5).<br>
+                ¡Sigue aprendiendo y trata de conseguir los <span style="color:#ff8a00;font-weight:bold;">10 puntos</span>!
+            </p>
+            <div class="progress-cards">
+                <div class="progress-card">
+                    <i class="fas fa-book-open"></i>
+                    <div>
+                        <span class="progress-value"><%= user && user.completedLessons ? user.completedLessons.length : 0 %></span>
+                        <span class="progress-label">Lecciones completadas</span>
+                    </div>
+                </div>
+                <%
+                // Lógica para sumar puntos según las lecciones aprendidas
+                let points = 0;
+                if (user && user.completedLessons) {
+                    user.completedLessons.forEach(lesson => {
+                        if (lesson === 'subtraction') points += 2;
+                        if (lesson === 'differences') points += 3;
+                        if (lesson === 'numberFriends') points += 5;
+                    });
+                }
+                %>
+                <div class="progress-card">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <span class="progress-value"><%= points %></span>
+                        <span class="progress-label">Puntos totales</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="lessons">
-            <h2>Lecciones Aprendidas</h2>
-            <ul>
-                <% if (user && user.completedLessons) { %>
-                    <% user.completedLessons.forEach(lesson => { %>
-                        <li><%= lesson %></li>
+        <section class="lessons" style="max-width: 900px; margin: 2rem auto;">
+            <h2><i class="fas fa-graduation-cap"></i> Lecciones Aprendidas</h2>
+            <ul class="lessons-list">
+                <% if (user && user.completedLessons && user.completedLessons.length > 0) { %>
+                    <% user.completedLessons.forEach((lesson, idx) => { %>
+                        <li class="lesson-item">
+                            <span class="lesson-name"><i class="fas fa-check-circle"></i> <%= lesson %></span>
+                        </li>
                     <% }) %>
                 <% } else { %>
-                    <li>No has completado ninguna lección aún.</li>
+                    <li class="lesson-item empty">No has completado ninguna lección aún.</li>
                 <% } %>
             </ul>
         </section>
 
-        <section class="actions">
-            <button id="reset-progress" class="reset-button" onclick="resetProgress()">Reiniciar Progreso</button>
+        <section class="actions" style="max-width: 900px; margin: 2rem auto;">
+            <button id="reset-progress" class="reset-button" onclick="resetProgress()">
+                <i class="fas fa-redo"></i> Reiniciar Progreso
+            </button>
         </section>
     </main>
 
@@ -71,7 +103,6 @@
         <p>&copy; 2023 Aprendizaje de Matemáticas. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="/js/main.js"></script>
     <script>
         function resetProgress() {
             if (confirm('¿Estás seguro de que deseas reiniciar tu progreso? Esta acción no se puede deshacer.')) {

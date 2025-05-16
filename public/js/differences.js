@@ -310,14 +310,26 @@ document.addEventListener('DOMContentLoaded', function() {
         gameBoard.innerHTML = `
             <div class="game-completed">
                 <h2>¡Felicidades!</h2>
-                <p>Has completado el nivel ${currentLevel}</p>
-                <p>Tu puntuación: ${score} de ${totalProblems}</p>
-                <button id="playAgainBtn" class="control-btn">Jugar de nuevo</button>
+                <p>Has completado todos los problemas.</p>
+                <div class="end-actions">
+                    <button id="playAgainBtn" class="control-btn">Jugar de Nuevo</button>
+                    <button id="finishLessonButton" class="control-btn">Finalizar Lección</button>
+                </div>
             </div>
         `;
-        
+    
         document.getElementById('playAgainBtn').addEventListener('click', function() {
             location.reload();
+        });
+    
+        document.getElementById('finishLessonButton').addEventListener('click', function() {
+            fetch('/progress/complete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ lessonId: 'differences' })
+            }).then(res => {
+                if (res.ok) window.location.href = '/progress';
+            });
         });
     }
     

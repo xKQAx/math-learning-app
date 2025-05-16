@@ -2,7 +2,7 @@
 
 /* Contenedor principal del juego */
 .game-container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f9f7ff;
@@ -284,7 +284,7 @@
 /* Animaciones */
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+    50% { transform: translateY(-8px); }
 }
 
 @keyframes glow {
@@ -358,4 +358,26 @@
         flex-direction: column;
         gap: 10px;
     }
+}
+
+/* public/css/numberFriends.css o styles.css */
+.intro-emoji {
+    font-size: 2rem;
+    margin-right: 0.3rem;
+    vertical-align: middle;
+    animation: bounce 1.2s infinite;
+}
+
+.intro-lead {
+    color: #4b0082;
+    font-size: 1.15rem;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+
+.highlight {
+    color: #ff8a00;
+    font-weight: bold;
 }

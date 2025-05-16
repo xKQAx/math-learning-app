@@ -239,13 +239,21 @@
 }
 
 .control-btn {
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    font-weight: bold;
+    padding: 16px 32px;
+    font-size: 1.2rem;
+    border-radius: 10px;
     border: none;
-    border-radius: 50px;
+    background: var(--primary-light, #6b89ff);
+    color: #fff;
+    margin-right: 12px;
+    transition: background 0.2s, transform 0.2s;
     cursor: pointer;
-    transition: all 0.3s ease;
+    min-width: 180px;
+    box-sizing: border-box;
+}
+
+.control-btn:last-child {
+    margin-right: 0;
 }
 
 #nextBtn {
@@ -354,6 +362,13 @@
     font-size: 0.9rem;
 }
 
+.end-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 24px;
+}
+
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .game-container {
@@ -381,3 +396,73 @@
         min-width: 200px;
     }
 }
+
+/* Estilos para el estado de juego completado */
+.game-completed {
+    background: linear-gradient(120deg, #f8f8ff 60%, #e0e0ff 100%);
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(98, 112, 219, 0.10);
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+    margin: 2rem auto 0 auto;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: popIn 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    80% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+.game-completed h2 {
+    color: #9370db;
+    font-size: 2.2rem;
+    margin-bottom: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.game-completed h2::before {
+    content: "🎉";
+    font-size: 2.2rem;
+    margin-right: 0.3rem;
+    animation: bounce 1.2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-8px);}
+}
+
+.game-completed p {
+    color: #4b0082;
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+.end-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+@media (max-width: 600px) {
+    .game-completed {
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+        max-width: 98vw;
+    }
+    .game-completed h2 {
+        font-size: 1.4rem;
+    }
+}
+

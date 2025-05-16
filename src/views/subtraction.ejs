@@ -14,7 +14,9 @@
     <header>
         <nav class="navbar">
             <div class="navbar-left">
-                <a href="/" class="logo">MathPlay</a>
+                <a href="/" class="logo">
+                    <i class="fas fa-calculator logo-icon"></i> MathPlay
+                </a>
                 <ul class="nav-links">
                     <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="/games"><i class="fas fa-dice"></i> Games</a></li>
@@ -22,7 +24,6 @@
                 </ul>
             </div>
             <div class="navbar-right">
-                <button class="parent-zone">Parent Zone</button>
                 <% if (user) { %>
                     <!-- Nombre del usuario logueado -->
                     <div class="user-info">
@@ -44,18 +45,23 @@
     </header>
 
     <main>
-        <!-- Miga de pan -->
-        <nav class="breadcrumb">
-            <a href="/">Inicio</a> > <a href="/games">Juegos</a> > Restas con el número 5
-        </nav>
+    <nav class="breadcrumb">
+        <a href="/loggedHome"><i class="fas fa-home"></i> Inicio</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="/games"><i class="fas fa-dice"></i> Juegos</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>Restas con el 5</span>
+    </nav>
 
         <!-- Título y subtítulo -->
-        <section class="exercise-header">
-            <h1>Restas con el número 5</h1>
-            <h2>¡Aprende a restar de forma divertida!</h2>
-            <p class="instructions">
-                En este ejercicio, debes resolver las restas interactuando con los elementos en pantalla. 
-                Sigue las pistas y diviértete aprendiendo.
+        <section class="exercise-header intro-section">
+            <h1>
+                <span class="intro-emoji">➖</span>
+                ¡Restas con el número 5!
+            </h1>
+            <p class="intro-lead">
+                Escribe el resultado de cada resta en pantalla. Si necesitas ayuda, utiliza las <span class="highlight">pistas</span> que aparecen en los círculos de abajo.<br>
+                Cuando termines todos los ejercicios, haz clic en <b>Finalizar Lección</b> para guardar tu progreso.
             </p>
         </section>
 
@@ -70,22 +76,17 @@
                 <!-- Aquí se cargará dinámicamente el ejercicio actual -->
             </div>
             <div id="exercise-buttons-container">
-                <div id="exercise-buttons">
-                    <button id="reset-exercise">Reiniciar</button>
-                    <button id="show-hint">Mostrar pista</button>
-                    <button id="auto-solve">Resolver paso a paso</button>
-                    <button id="next-exercise" disabled>Siguiente ejercicio</button>
-                </div>
+            <div id="exercise-buttons">
+                <button id="reset-exercise" class="exercise-btn">Reiniciar</button>
+                <button id="show-hint" class="exercise-btn">Mostrar pista</button>
+                <button id="auto-solve" class="exercise-btn">Resolver paso a paso</button>
+                <button id="next-exercise" class="exercise-btn" disabled>Siguiente ejercicio</button>
+                <button id="completeLessonButton" class="exercise-btn complete-lesson-btn" disabled onclick="completeLesson()">Finalizar Lección</button>
+            </div>
                 <div id="p5-container"></div>
             </div>
         </div>
-        <div id="result"></div>
-        
-        <!-- Botón para avanzar al siguiente ejercicio -->
-        <button id="nextExerciseButton" class="next-exercise-btn">Siguiente Ejercicio</button>
-
-        <!-- Botón para finalizar la lección (oculto por defecto) -->
-        <button id="completeLessonButton" class="complete-lesson-btn" style="display: none;" onclick="completeLesson()">Finalizar Lección</button>
+        <div id="result"></div>    
     </main>
 
     <footer>
@@ -95,6 +96,12 @@
     <script src="/js/main.js"></script>
     <script src="/js/subtraction-p5.js"></script>
     <script>
+        // Habilitar el botón de finalizar lección al terminar todos los ejercicios
+        function enableCompleteLessonButton() {
+            const completeButton = document.getElementById('completeLessonButton');
+            completeButton.disabled = false;
+        }
+
         // Función para completar la lección
         function completeLesson() {
             const lessonId = 'subtraction'; // Identificador único de la lección
@@ -116,12 +123,6 @@
                 }
             })
             .catch(error => console.error('Error:', error));
-        }
-
-        // Mostrar el botón de finalizar lección al completar el último ejercicio
-        function showCompleteLessonButton() {
-            const completeButton = document.getElementById('completeLessonButton');
-            completeButton.style.display = 'block'; // Mostrar el botón
         }
 
         // Detectar cuando se completa el último ejercicio
