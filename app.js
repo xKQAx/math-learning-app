@@ -19,7 +19,7 @@ const app = express();
 const PORT = 3000;
 
 // Conexión a MongoDB
-mongoose.connect('mongodb+srv://xKQAx:aliasgamer2.0@cluster0.8q0utd9.mongodb.net/')
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('Conectado a MongoDB'))
     .catch(err => console.error('Error al conectar a MongoDB:', err));
 
@@ -29,11 +29,11 @@ app.use(express.json());
 
 // Configuración de sesión
 app.use(session({
-    secret: 'your-secret-key', // Cambia esto por una clave secreta segura
+    secret: process.env.SESSION_SECRET, // Usa también una variable de entorno para la clave secreta
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: 'mongodb+srv://xKQAx:aliasgamer2.0@cluster0.8q0utd9.mongodb.net/',
+        mongoUrl: process.env.MONGODB_URI,
     }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 // 1 día
